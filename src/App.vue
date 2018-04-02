@@ -14,15 +14,11 @@
       </form>
       <hr />
       <div class="card-columns">
-        <MessageCard class="card card-outline-success"
-          :title="'Hello!'"
-          :text="'This is our fixed card!'"
-          :footer="'Add on ' + dateToString(Date.now())"></MessageCard>
-        <MessageCard v-for="message in messages"
-          :title="message.title"
-          :text="message.text"
-          :footer="'Added on ' + dateToString(message.timestamp)"
-          :key="message.id"></MessageCard>
+        <message-card class="card card-outline-success"
+          :message="firstMessage"></message-card>
+        <message-card v-for="message in messages"
+          :message="message"
+          :key="message.id"></message-card>
       </div>
     </div>
   </div>
@@ -45,9 +41,21 @@ let config = {
 let app = Firebase.initializeApp(config)
 let db = app.database()
 let messagesRef = db.ref('messages')
+let FIRST_MESSAGE_TEXT = 'I created this page using Vue.js, Bootstrap and Firebase. ' +
+    'The tutorial of this web page is described in the first part of the "Web Development with Bootstrap and Vue.js" book. ' +
+    'If you are reading it at the moment, thanks a lot! ' +
+    'I am also the author of "Learning Vue.js 2" book. I like Vue.js very much. ' +
+    'I also love studying and teaching, reading and writing, skiing and diving. ' +
+    'It\'s a great pleasure meeting you!'
 export default {
   data () {
     return {
+      firstMessage: {
+        isFirst: true,
+        title: 'Hello I am Olga',
+        text: FIRST_MESSAGE_TEXT,
+        timestamp: Date.now()
+      },
       newMessage: {
         title: '',
         text: '',
@@ -78,14 +86,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
