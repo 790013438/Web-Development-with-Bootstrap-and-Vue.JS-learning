@@ -19,7 +19,7 @@
           <div class="card-block card-columns">
             <h5 class="card-title">{{ message.title }}</h5>
             <p class="card-text">{{ message.text }}</p>
-            <p class="card-text"><small class="text-muted">Added on {{ message.timestamp }}</small></p>
+            <p class="card-text"><small class="text-muted">Added on {{ dateToString(message.timestamp) }}</small></p>
           </div>
         </div>
       </div>
@@ -29,6 +29,7 @@
 
 <script>
 import Firebase from 'firebase'
+import { dateToString } from './utils/utils'
 
 let config = {
   apiKey: 'AIzaSyAM_Q7pMQnbCXbvxJE19s4Gw312hZuIEoM',
@@ -63,7 +64,8 @@ export default {
       this.newMessage.text = ''
       this.newMessage.title = ''
       this.newMesage.timestamp = null
-    }
+    },
+    dateToString
   },
   firebase: {
     messages: messagesRef
