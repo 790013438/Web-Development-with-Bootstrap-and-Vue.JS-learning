@@ -16,7 +16,7 @@
       <div class="card-group">
         <div class="card" v-for="message in messages"
              :key="message.id">
-          <div class="card-block">
+          <div class="card-block card-columns">
             <h5 class="card-title">{{ message.title }}</h5>
             <p class="card-text">{{ message.text }}</p>
             <p class="card-text"><small class="text-muted">Added on {{ message.timestamp }}</small></p>
