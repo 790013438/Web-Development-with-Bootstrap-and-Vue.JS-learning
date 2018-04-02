@@ -14,7 +14,7 @@
       </form>
       <hr />
       <div class="card-columns">
-        <div class="card" v-for="message in messages"
+        <div class="card" v-for="message in reverse(messages)"
              :key="message.id">
           <div class="card-block">
             <h5 class="card-title">{{ message.title }}</h5>
@@ -29,7 +29,7 @@
 
 <script>
 import Firebase from 'firebase'
-import { dateToString } from './utils/utils'
+import { dateToString, reverse } from './utils/utils'
 
 let config = {
   apiKey: 'AIzaSyAM_Q7pMQnbCXbvxJE19s4Gw312hZuIEoM',
@@ -65,7 +65,8 @@ export default {
       this.newMessage.title = ''
       this.newMesage.timestamp = null
     },
-    dateToString
+    dateToString,
+    reverse
   },
   firebase: {
     messages: messagesRef

@@ -8,4 +8,8 @@ function dateToString (date) {
   return ''
 }
 
-export { dateToString }
+function reverse (array) {
+  return array.slice().reverse()
+}
+
+export { dateToString, reverse }
