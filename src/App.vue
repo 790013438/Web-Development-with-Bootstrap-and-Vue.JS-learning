@@ -55,8 +55,14 @@ export default {
   methods: {
     addMessage (e) {
       e.preventDefault()
+      if (this.newMessage.title === '') {
+        return
+      }
       this.newMessage.timestamp = Date.now()
       messagesRef.push(this.newMessage)
+      this.newMessage.text = ''
+      this.newMessage.title = ''
+      this.newMesage.timestamp = null
     }
   },
   firebase: {
