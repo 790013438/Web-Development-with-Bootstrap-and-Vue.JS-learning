@@ -14,6 +14,13 @@
       </form>
       <hr />
       <div class="card-columns">
+        <div class="card card-outline-success">
+          <div class="card-block">
+            <h5 class="card-title">Hello!</h5>
+            <p class="card-text">This is our fixed card!</p>
+            <p class="card-text"><small class="text-muted">Added on {{ dateToString(Date.now()) }}</small></p>
+          </div>
+        </div>
         <div class="card" v-for="message in reverse(messages)"
              :key="message.id">
           <div class="card-block">
