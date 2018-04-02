@@ -14,21 +14,15 @@
       </form>
       <hr />
       <div class="card-columns">
-        <div class="card card-outline-success">
-          <div class="card-block">
-            <h5 class="card-title">Hello!</h5>
-            <p class="card-text">This is our fixed card!</p>
-            <p class="card-text"><small class="text-muted">Added on {{ dateToString(Date.now()) }}</small></p>
-          </div>
-        </div>
-        <div class="card" v-for="message in reverse(messages)"
-             :key="message.id">
-          <div class="card-block">
-            <h5 class="card-title">{{ message.title }}</h5>
-            <p class="card-text">{{ message.text }}</p>
-            <p class="card-text"><small class="text-muted">Added on {{ dateToString(message.timestamp) }}</small></p>
-          </div>
-        </div>
+        <MessageCard class="card card-outline-success"
+          :title="'Hello!'"
+          :text="'This is our fixed card!'"
+          :footer="'Add on ' + dateToString(Date.now())"></MessageCard>
+        <MessageCard v-for="message in messages"
+          :title="message.title"
+          :text="message.text"
+          :footer="'Added on ' + dateToString(message.timestamp)"
+          :key="message.id"></MessageCard>
       </div>
     </div>
   </div>
@@ -37,6 +31,7 @@
 <script>
 import Firebase from 'firebase'
 import { dateToString, reverse } from './utils/utils'
+import MessageCard from './components/MessageCard.vue'
 
 let config = {
   apiKey: 'AIzaSyAM_Q7pMQnbCXbvxJE19s4Gw312hZuIEoM',
@@ -77,6 +72,9 @@ export default {
   },
   firebase: {
     messages: messagesRef
+  },
+  components: {
+    MessageCard
   }
 }
 </script>
