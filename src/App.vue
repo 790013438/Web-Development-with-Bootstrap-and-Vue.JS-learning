@@ -13,7 +13,7 @@
         <button class="btn btn-primary" type="submit">Send</button>
       </form>
       <hr />
-      <div class="card-group">
+      <div class="card-columns">
         <div class="card" v-for="message in messages"
              :key="message.id">
           <div class="card-block">
