@@ -12,7 +12,8 @@
   <body>
     <div id="app" class="jumbotron">
       <h1><span v-show="name">Hello, <strong>{{name}}</strong>!</span> Let's learn Vue.js</h1>
-      <img width="100%" v-bind:src="name ? gladSrc : sadSrc">
+      <img width="100%"
+          :src="name ? gladSrc : sadSrc">
       <div>
         <label for="name">What's your name? </label>
         <input id="name" type="text" v-model.lazy.trim="name"/>
