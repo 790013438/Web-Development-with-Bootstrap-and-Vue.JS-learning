@@ -7,12 +7,22 @@
   <body>
     <div id="app">
       <hello-component></hello-component>
+      <hello-component></hello-component>
+      <hello-component></hello-component>
     </div>
   </body>
   <script src="vue.js"></script>
   <script>
     var HelloComponent = {
-      template: '<h1>Hello!</h1>'
+      template: '<div>' +
+      '<input v-model="name" />' +
+      '<h1>Hello! <strong>{{name}}</strong>!</h1>' +
+      '</div>',
+      data() {
+        return {
+          name: ''
+        }
+      }
     }
     new Vue({
       el: '#app',
