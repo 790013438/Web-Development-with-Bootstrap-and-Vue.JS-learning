@@ -42,15 +42,18 @@
       <hr />
       <h2><span v-if="name">{{name}}!</span>Select your animals</h2>
       <div class="row">
-        <select class="col-12" @change="populateAnimalsForZoo" multiple="multiple" name="animals" id="animals">
+        <select class="col-12" v-model="animalsForZoo" multiple="multiple" name="animals" id="animals">
           <option v-for="animal in animals"
                   :value="animal">{{animal}}</option>
         </select>
       </div>
-      <ol>
-        <h2><span>{{name}}! </span>Here's your Zoo</h2>
-        <li v-for="animal in animalsForZoo"><span class="animal" v-html="animalCodes[animal]"></span></li>
-      </ol>
+      <hr />
+      <div v-if="animalsForZoo.length > 0">
+        <h2><span v-if="name">{{name}}! </span>Here's your Zoo</h2>
+        <ol>
+          <li v-for="animal in animalsForZoo"><span class="animal" v-html="animalCodes[animal]"></span></li>
+        </ol>
+      </div>
     </div>
     <script src="vue.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -83,16 +86,7 @@
 
       new Vue({
         el: '#app',
-        data,
-        methods: {
-          populateAnimalsForZoo (ev) {
-            this.animalsForZoo = []
-            const selected = document.querySelectorAll('#animals option:checked')
-            for (var i = 0; i < selected.length; ++i) {
-              this.animalsForZoo.push(selected[i].value)
-            }
-          }
-        }
+        data
       })
     </script>
   </body>
