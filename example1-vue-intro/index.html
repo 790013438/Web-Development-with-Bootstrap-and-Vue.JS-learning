@@ -17,10 +17,15 @@
         <input id="name" type="text" v-model="name"/>
       </div>
       <div v-html="animalCodes.cat"></div>
+      <ol>
+        <h2><span>{{name}}! </span>Here's your Zoo</h2>
+        <li v-for="animal in animals" v-html="animalCodes[animal]"></li>
+      </ol>
     </div>
     <script src="vue.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script>
+      const animals = ['dog', 'cat', 'monkey', 'unicorn']
       const animalCodes = {
         dog: '&#x1f436;',
         cat: '&#x1f638;',
@@ -28,6 +33,7 @@
         unicorn: '&#x1f984;'
       }
       var data = {
+        animals,
         animalCodes,
         name: 'Floyd'
       }
