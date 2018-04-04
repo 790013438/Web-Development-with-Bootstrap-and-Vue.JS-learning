@@ -4,6 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Vue.js - binding data</title>
+    <style>
+      #app {
+        width: 60%;
+        margin: 20px auto auto auto;
+      }
+      input {
+        padding-left: 10px;
+      }
+      .red {
+        color: red;
+      }
+      .green {
+        color: green;
+      }
+    </style>
     <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
@@ -14,7 +29,8 @@
       <h1><span v-show="name">Hello, <strong>{{name}}</strong>!</span> Let's learn Vue.js</h1>
       <img width="100%" v-bind:src="name ? gladSrc : sadSrc">
       <div>
-        <label for="name">What's your name? </label>
+        <label for="name"
+               :class="{green: name, red: !name}">What's your name? </label>
         <input id="name" type="text" v-model.lazy.trim="name"/>
       </div>
       <ol>
