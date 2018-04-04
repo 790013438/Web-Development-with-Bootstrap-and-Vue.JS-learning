@@ -14,7 +14,7 @@
       <h1><span v-show="name">Hello, <strong>{{name}}</strong>!</span> Let's learn Vue.js</h1>
       <div>
         <label for="name">What's your name? </label>
-        <input id="name" type="text" v-model="name"/>
+        <input id="name" type="text" v-model.lazy.trim="name"/>
       </div>
       <div v-html="animalCodes.cat"></div>
       <ol>
@@ -33,9 +33,9 @@
         unicorn: '&#x1f984;'
       }
       var data = {
+        name: 'Floyd',
         animals,
-        animalCodes,
-        name: 'Floyd'
+        animalCodes
       }
 
       new Vue({
