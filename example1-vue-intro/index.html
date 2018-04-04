@@ -12,11 +12,11 @@
   <body>
     <div id="app" class="jumbotron">
       <h1><span v-show="name">Hello, <strong>{{name}}</strong>!</span> Let's learn Vue.js</h1>
+      <img width="100%" v-bind:src="name ? gladSrc : sadSrc">
       <div>
         <label for="name">What's your name? </label>
         <input id="name" type="text" v-model.lazy.trim="name"/>
       </div>
-      <div v-html="animalCodes.cat"></div>
       <ol>
         <h2><span>{{name}}! </span>Here's your Zoo</h2>
         <li v-for="animal in animals" v-html="animalCodes[animal]"></li>
@@ -35,7 +35,9 @@
       var data = {
         name: 'Floyd',
         animals,
-        animalCodes
+        animalCodes,
+        sadSrc: 'images/sad.png',
+        gladSrc: 'images/glad.png'
       }
 
       new Vue({
