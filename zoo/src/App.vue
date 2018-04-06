@@ -21,17 +21,15 @@
       </select>
     </div>
     <hr />
-    <div v-if="animalsForZoo.length > 0">
-      <h2><span v-if="name">{{name}}! </span>Here's your Zoo</h2>
-      <ol>
-        <li v-for="animal in animalsForZoo"
-            :key="animal.id"><span class="animal" v-html="animalsCodes[animal]"></span></li>
-      </ol>
-    </div>
+    <zoo
+      :animals="animalsForZoo"
+      :animalsCodes="animalsCodes"
+      :name="name"></zoo>
   </div>
 </template>
 
 <script>
+import Zoo from './components/Zoo'
 var animalsForZoo = []
 var animalsCodes = {
   dog: '&#x1f436;',
@@ -61,6 +59,9 @@ export default {
   name: 'app',
   data () {
     return data
+  },
+  components: {
+    Zoo
   }
 }
 </script>
