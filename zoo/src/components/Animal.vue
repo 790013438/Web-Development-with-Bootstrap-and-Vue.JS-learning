@@ -14,7 +14,7 @@ export default {
     }
   },
   methods: {
-    toggleDescriptioin () {
+    toggleDescription () {
       this.showDescription = !this.showDescription
     }
   }

@@ -8,6 +8,11 @@
 
 <script>
 export default {
-  props: ['name']
+  props: ['initialName'],
+  data () {
+    return {
+      name: this.initialName
+    }
+  }
 }
 </script>

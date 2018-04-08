@@ -7,7 +7,7 @@
     </div>
     <hr />
     <introduction
-      :name="name"></introduction>
+      :initialName="name"></introduction>
     <hr />
     <h2><span v-if="name">{{name}}! </span>Select your animals</h2>
     <div class="row">
@@ -69,10 +69,20 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  margin-top: 60px;
+  width: 60%;
+  margin: 20px auto auto auto;
+}
+input {
+  padding-left: 10px;
+}
+.animal {
+  font-size: 4em;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
 }
 </style>
