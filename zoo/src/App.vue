@@ -6,7 +6,7 @@
                               :src="name ? gladSrc : sadSrc"/></div>
     </div>
     <hr />
-    <introduction
+    <introduction @nameChanged="onNameChanged"
       :initialName="name"></introduction>
     <hr />
     <h2><span v-if="name">{{name}}! </span>Select your animals</h2>
@@ -63,6 +63,11 @@ export default {
   },
   data () {
     return data
+  },
+  methods: {
+    onNameChanged (newName) {
+      this.name = newName
+    }
   }
 }
 </script>

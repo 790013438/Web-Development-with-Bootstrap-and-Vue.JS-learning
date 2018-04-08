@@ -2,7 +2,7 @@
   <div>
     <label for="name"
            :class="{green: name, red: !name}">What's your name? </label>
-    <input id="name" type="text" v-model.trim="name">
+    <input id="name" type="text" v-model.trim="name" @input="onInput">
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   data () {
     return {
       name: this.initialName
+    }
+  },
+  methods: {
+    onInput () {
+      this.$emit('nameChanged', this.name)
     }
   }
 }
