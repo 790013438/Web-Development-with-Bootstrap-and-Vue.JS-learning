@@ -1,13 +1,65 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <h1>Hello, {{name}}! Let's learn Vue.js</h1>
+    <img width="100%"
+      :src="name ? gladSrc : sadSrc"/>
+    <hr />
+    <introduction
+      :name="name"></introduction>
+    <hr />
+    <h2>{{name}}! Select your animals</h2>
+    <select v-model="animalsForZoo" multiple="multiple" name="animals" id="animals">
+      <option v-for="animal in animals"
+        :value="animal"
+        :key="animal.id">{{animal}}</option>
+    </select>
+  <hr />
+  <zoo
+    :animals="animalsForZoo"
+    :animalsCodes="animalsCodes"
+    :name="name"></zoo>
   </div>
 </template>
 
 <script>
+import Zoo from './components/Zoo'
+import Introduction from './components/Introduction'
+
+var animalsForZoo = []
+var animalsCodes = {
+  dog: '&#x1f436;',
+  cat: '&#x1f638;',
+  monkey: '&#x1f435;',
+  unicorn: '&#x1f984;',
+  tiger: '&#x1f42f;',
+  mouse: '&#x1f42d;',
+  rabbit: '&#x1f430;',
+  cow: '&#x1f42e;',
+  whale: '&#x1f433;',
+  horse: '&#x1f434;',
+  pig: '&#x1f437;',
+  frog: '&#x1f438;',
+  koala: '&#x1f43c;'
+}
+var animals = Object.keys(animalsCodes)
+var data = {
+  name: 'Floyd',
+  animals,
+  animalsCodes,
+  animalsForZoo,
+  sadSrc: '../static/images/sad.png',
+  gladSrc: '../static/images/glad.png'
+}
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Zoo,
+    Introduction
+  },
+  data () {
+    return data
+  }
 }
 </script>
 
@@ -18,6 +70,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
