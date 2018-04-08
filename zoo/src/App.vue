@@ -1,23 +1,27 @@
 <template>
-  <div id="app">
-    <h1>Hello, {{name}}! Let's learn Vue.js</h1>
-    <img width="100%"
-      :src="name ? gladSrc : sadSrc"/>
+  <div id="app" class="jumbotron">
+    <div class="row">
+      <div class="col-9"><h1>Hello, {{name}}! Let's learn Vue.js</h1></div>
+      <div class="col-3"><img width="100%"
+                              :src="name ? gladSrc : sadSrc"/></div>
+    </div>
     <hr />
     <introduction
       :name="name"></introduction>
     <hr />
-    <h2>{{name}}! Select your animals</h2>
-    <select v-model="animalsForZoo" multiple="multiple" name="animals" id="animals">
-      <option v-for="animal in animals"
-        :value="animal"
-        :key="animal.id">{{animal}}</option>
-    </select>
-  <hr />
-  <zoo
-    :animals="animalsForZoo"
-    :animalsCodes="animalsCodes"
-    :name="name"></zoo>
+    <h2><span v-if="name">{{name}}! </span>Select your animals</h2>
+    <div class="row">
+      <select class="col-12" v-model="animalsForZoo" multiple="multiple" name="animals" id="animals">
+        <option v-for="animal in animals"
+                :value="animal"
+                :key="animal.id">{{animal}}</option>
+      </select>
+    </div>
+    <hr />
+    <zoo
+      :animals="animalsForZoo"
+      :animalsCodes="animalsCodes"
+      :name="name"></zoo>
   </div>
 </template>
 
