@@ -8,16 +8,24 @@
 
 <script>
 export default {
-  props: ['initialName'],
-  data () {
-    return {
-      name: this.initialName
+  computed: {
+    name () {
+      return this.$store.state.name
     }
   },
   methods: {
-    onInput () {
-      this.$emit('nameChanged', this.name)
+    onInput (ev) {
+      this.$store.commit('updateName', ev.currentTarget.value)
     }
   }
 }
 </script>
+
+<style>
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+</style>
