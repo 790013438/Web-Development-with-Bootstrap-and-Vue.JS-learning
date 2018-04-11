@@ -4,8 +4,8 @@
     <ol>
       <animal v-for="animal in animals"
         :key="animal"
-        :animal="animalCodes[animal]"
-        :description="animalDescriptions[animal]"></animal>
+        :animal="animalsCodes[animal]"
+        :description="animalsDescriptions[animal]"></animal>
     </ol>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
       return this.$store.state.animalsCodes
     },
     animalsDescriptions () {
-      return this.$store.state.animalsCodes
+      return this.$store.state.animalsDescriptions
     },
     name () {
       return this.$store.state.name

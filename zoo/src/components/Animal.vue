@@ -13,7 +13,7 @@ export default {
       showDescription: false
     }
   },
-  mehtods: {
+  methods: {
     toggleDescription () {
       this.showDescription = !this.showDescription
     }
