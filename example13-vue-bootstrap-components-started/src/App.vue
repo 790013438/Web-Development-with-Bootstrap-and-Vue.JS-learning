@@ -1,13 +1,37 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <img src="./assets/logo.png">
-    <router-view/>
+    <alert
+      :text="text"
+      :type="type"></alert>
   </div>
 </template>
 
 <script>
+import Alert from './components/Alert'
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      title: 'Vue Bootstrap Component',
+      text: 'Isn\'t it easy?',
+      randomValue: Math.ceil(Math.random() * 100)
+    }
+  },
+  computed: {
+    type () {
+      if (this.randomValue % 3 === 0) {
+        return 'info'
+      } else if (this.randomValue % 2 === 0) {
+        return 'danger'
+      } else if (this.randomValue % 5 === 0) {
+        return 'warning'
+      }
+    }
+  },
+  components: {
+    Alert
+  }
 }
 </script>
 
