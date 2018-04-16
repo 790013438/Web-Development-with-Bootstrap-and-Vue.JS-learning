@@ -10,9 +10,23 @@
 </template>
 
 <script>
+function calcEndPoint (angle) {
+  let x, y
+  x = 100 - 100 * Math.sin(Math.PI * angle / 180)
+  y = 100 - 100 * Math.cos(Math.PI * angle / 180)
+
+  return {
+    x, y
+  }
+}
 function calcPath (angle) {
   let d
-  d = 'M100,100 L100,0 A100,100 0 0, 0 0, 100 z'
+  let {x, y} = calcEndPoint(angle)
+  if (angle <= 180) {
+    d = `M100,100 L100, 0 A100,100 0 0,0 ${x}, ${y} z`
+  } else {
+    d = `M100,100 L100, 0 A100,100 0 0,0 100, 200 A100,100 0 0,0 ${x}, ${y} z`
+  }
   return d
 }
 
