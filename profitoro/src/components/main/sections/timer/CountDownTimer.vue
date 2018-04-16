@@ -4,7 +4,7 @@
     <div>
       <svg-circle-sector
         :angle="30"
-        :text="Hello"></svg-circle-sector>
+        :text="'Hello'"></svg-circle-sector>
     </div>
   </div>
 </template>

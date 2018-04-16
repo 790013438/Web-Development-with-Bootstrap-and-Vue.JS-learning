@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import CountDownTimer from './timer'
+import CountDownTimer from './timer/CountDownTimer'
 export default {
   components: {
     CountDownTimer
