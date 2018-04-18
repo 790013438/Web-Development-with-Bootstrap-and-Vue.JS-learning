@@ -7,6 +7,9 @@
 
 <script>
 import CountDownTimer from './timer/CountDownTimer'
+import config from '../../../config'
+
+// courtesy of https://stackoverflow.com/a/23395136
 export default {
   computed: {
     time () {
