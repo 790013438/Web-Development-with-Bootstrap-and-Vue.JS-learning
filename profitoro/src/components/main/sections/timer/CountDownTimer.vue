@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <svg-circle-sector class="col-sm-12 col-md-8 col-lg-6 col-xl-4"
         :angle="angle"
-        :text="'Hello'"></svg-circle-sector>
+        :text="text"></svg-circle-sector>
     </div>
     <div class="controls">
       <div class="btn-group" role="group">
@@ -22,12 +22,22 @@ export default {
   props: ['time'],
   data () {
     return {
-      timestamp: this.time
+      //timestamp: this.time
+      timestamp: 20 * 60
     }
   },
   computed: {
     angle () {
       return 360 - (360 / this.time * this.timestamp)
+    },
+    minutes () {
+      return Math.floor(this.timestamp / 60)
+    },
+    seconds () {
+      return this.timestamp % 60
+    },
+    text () {
+      return `${this.minutes}:${this.seconds}`
     }
   },
   components: {

@@ -10,7 +10,7 @@ import CountDownTimer from './timer/CountDownTimer'
 export default {
   computed: {
     time () {
-      return 14 * 60
+      return 25 * 60
     }
   },
   components: {
