@@ -57,20 +57,6 @@ $small-circle-color: lightgray;
 $segment-color: darkgray;
 $text-color: black;
 
-.circle {
-  display: inlin-block;
-  position: relative;
-  width: 100%;
-  padding-bottom: 100%;
-  vertical-align: middle;
-  svg {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-}
-
 .bigCircle {
   fill: $big-circle-color;
 }
