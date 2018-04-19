@@ -2,7 +2,15 @@
   <div class="container">
     <div class="row">
       <div v-show="!isWorking" class="col-sm-4">
-        WORKOUT TIME!
+        <div class="jumbotron">
+          <div class="container">
+            <img class="img-fluid rounded" src="IMAGE_SOURCE" alt=""/>
+            <h2>Push-ups</h2>
+            <span>
+            Description: lorem ipsum
+            </span>
+          </div>
+        </div>
       </div>
       <count-down-timer class="col-sm-8"
                         @finished="togglePomodoro"
