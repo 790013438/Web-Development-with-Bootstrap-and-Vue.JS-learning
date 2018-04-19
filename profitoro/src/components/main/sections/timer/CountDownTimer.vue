@@ -20,6 +20,9 @@
 
 <script>
 import SvgCircleSector from './SvgCircleSector'
+
+const SECOND = 1000
+
 /**
  * Adds a trailing 0 on the left of the given value
  * @param {string|number} value
@@ -33,6 +36,17 @@ function leftPad (value) {
   return '0' + value
 }
 
+/**
+ * Returns number of seconds between a given start time and now
+ * @param {timestamp} startTime
+ * @returns {number} the number of seconds
+ */
+function numberOfSecondsFromNow (startTime) {
+  if (!startTime) {
+    return 0
+  }
+  return Math.floor((Date.now() - startTime) / SECOND)
+}
 export default {
   props: ['time'],
   data () {
@@ -41,7 +55,10 @@ export default {
       interval: null,
       isStarted: false,
       isPaused: false,
-      isStopped: true
+      isStopped: true,
+      startTime: null,
+      pauseTime: null,
+      pauseSeconds: 0
     }
   },
   computed: {
@@ -62,34 +79,51 @@ export default {
     SvgCircleSector
   },
   methods: {
-    start () {
-      if (this.isStarted === false) {
-        this.timestamp = this.time
-      }
+    _reset () {
+      this.pauseTime = null
       this.isStarted = true
       this.isStopped = false
       this.isPaused = false
       if (this.interval) {
         clearInterval(this.interval)
       }
+    },
+    start () {
+      if (this.isStarted === false) {
+        this.timestamp = this.time
+        this.startTime = Date.now()
+      }
+      this.pauseSeconds += numberOfSecondsFromNow(this.pauseTime)
+      this._reset()
       this.interval = setInterval(() => {
-        this.timestamp--
+        // seconds from the start time until now
+        let secondsFromStart = numberOfSecondsFromNow(this.startTime)
+
+        this.timestamp = this.time - secondsFromStart + this.pauseSeconds
         if (this.timestamp <= 0) {
           this.$emit('finished')
           this.timestamp = this.time
         }
-      }, 1000)
+      }, 10)
     },
     pause () {
+      this.pauseTime = Date.now()
       clearInterval(this.interval)
       this.isPaused = true
     },
     stop () {
       clearInterval(this.interval)
       this.timestamp = this.time
+      this.pauseSeconds = 0
       this.isStopped = true
       this.isStarted = false
       this.isPaused = false
+    }
+  },
+  watch: {
+    time () {
+      this.isStarted = false
+      this.start()
     }
   }
 }
