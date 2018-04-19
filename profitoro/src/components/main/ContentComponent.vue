@@ -1,14 +1,16 @@
 <template>
-  <div>
+  <div class="container">
+    <settings></settings>
     <pomodoro-timer></pomodoro-timer>
   </div>
 </template>
 
 <script>
-import {PomodoroTimer} from './sections'
+import {PomodoroTimer, Settings} from './sections'
 export default {
   components: {
-    PomodoroTimer
+    PomodoroTimer,
+    Settings
   }
 }
 </script>
