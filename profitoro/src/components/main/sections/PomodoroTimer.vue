@@ -1,8 +1,13 @@
 <template>
-  <div>
-    <count-down-timer
-      @finished="togglePomodoro"
-      :time="time"></count-down-timer>
+  <div class="container">
+    <div class="row">
+      <div v-show="!isWorking" class="col-sm-4">
+        WORKOUT TIME!
+      </div>
+      <count-down-timer class="col-sm-8"
+                        @finished="togglePomodoro"
+                        :time="time"></count-down-timer>
+    </div>
   </div>
 </template>
 
