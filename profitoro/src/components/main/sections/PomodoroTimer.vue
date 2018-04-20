@@ -12,9 +12,11 @@
           </div>
         </div>
       </div>
-      <count-down-timer class="col-sm-8"
-                        @finished="togglePomodoro"
-                        :time="time"></count-down-timer>
+      <div class="col-sm-12 col-md-6 col-lg-8">
+        <count-down-timer
+           @finished="togglePomodoro"
+           :time="time"></count-down-timer>
+      </div>
     </div>
   </div>
 </template>

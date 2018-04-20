@@ -71,5 +71,7 @@ $text-color: black;
   stroke-width: 0;
   opacity: .9;
   fill: $text-color;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 </style>
