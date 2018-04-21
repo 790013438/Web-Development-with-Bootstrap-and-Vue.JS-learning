@@ -1,3 +1,5 @@
+import { firebaseAction } from 'vuexfire'
+
 export default {
   setWorkingPomodoro ({commit}, workingPomodoro) {
     if (workingPomodoro) {
@@ -13,5 +15,8 @@ export default {
     if (longBreak) {
       commit('setLongBreak', parseInt(longBreak, 10))
     }
-  }
+  },
+  bindConfig: firebaseAction(({bindFirebaseRef, state}) => {
+    bindFirebaseRef('config', state.configRef)
+  })
 }

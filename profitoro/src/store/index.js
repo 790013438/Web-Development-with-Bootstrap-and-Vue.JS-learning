@@ -3,13 +3,28 @@ import Vuex from 'vuex'
 import state from './state'
 import getters from './getter'
 import mutations from './mutations'
-import actions from './action'
+import actions from './actions'
+import firebase from 'firebase'
+import { firebaseMutations } from 'vuexfire'
 
 Vue.use(Vuex)
 
+// Initialize Firebase
+let config = {
+  databaseURL: 'https://pomodorofloyd.firebaseio.com'
+}
+let app = firebase.initializeApp(config)
+let configRef = app.database().ref('/configuration/test')
+
 export default new Vuex.Store({
-  state,
+  state: {
+    ...state,
+    configRef
+  },
   getters,
-  mutations,
+  mutations: {
+    ...mutations,
+    ...firebaseMutations
+  },
   actions
 })
