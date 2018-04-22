@@ -14,12 +14,15 @@ let config = {
   databaseURL: 'https://pomodorofloyd.firebaseio.com'
 }
 let app = firebase.initializeApp(config)
-let configRef = app.database().ref('/configuration/test')
+let db = app.database()
+let configRef = db.ref('/configuration/test')
+let statisticsRef = db.ref('/statistics/test')
 
 export default new Vuex.Store({
   state: {
     ...state,
-    configRef
+    configRef,
+    statisticsRef
   },
   getters,
   mutations: {

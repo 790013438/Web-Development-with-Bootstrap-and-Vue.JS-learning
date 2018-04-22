@@ -5,36 +5,42 @@ export default {
     if (!workingPomodoro) {
       return
     }
+    workingPomodoro = parseFloat(workingPomodoro)
     if (state.configRef) {
-      workingPomodoro = parseInt(workingPomodoro, 10)
       state.configRef.update({workingPomodoro})
     } else {
-      commit('setWorkingPomodoro', parseInt(workingPomodoro, 10))
+      commit('setWorkingPomodoro', workingPomodoro)
     }
   },
   setShortBreak ({commit, state}, shortBreak) {
     if (!shortBreak) {
       return
     }
+    shortBreak = parseFloat(shortBreak)
     if (state.configRef) {
-      shortBreak = parseInt(shortBreak, 10)
       state.configRef.update({shortBreak})
     } else {
-      commit('setShortBreak', parseInt(shortBreak, 10))
+      commit('setShortBreak', shortBreak)
     }
   },
   setLongBreak ({commit, state}, longBreak) {
     if (!longBreak) {
       return
     }
+    longBreak = parseFloat(longBreak)
     if (state.configRef) {
-      longBreak = parseInt(longBreak, 10)
       state.configRef.update({longBreak})
     } else {
-      commit('setLongBreak', parseInt(longBreak, 10))
+      commit('setLongBreak', longBreak)
     }
+  },
+  updateTotalPomodoros ({state}, totalPomodoros) {
+    state.statisticsRef.update({totalPomodoros: totalPomodoros})
   },
   bindConfig: firebaseAction(({bindFirebaseRef, state}) => {
     bindFirebaseRef('config', state.configRef)
+  }),
+  bindStatistics: firebaseAction((bindFirebaseRef, state) => {
+    bindFirebaseRef('statistics', state.statisticsRef)
   })
 }

@@ -5,6 +5,11 @@ const config = {
   pomodorosTillLongBreak: 3
 }
 
+const statistics = {
+  totalPomodoros: 0
+}
+
 export default {
-  config
+  config,
+  statistics
 }
