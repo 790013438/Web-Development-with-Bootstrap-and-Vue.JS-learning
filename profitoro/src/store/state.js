@@ -5,11 +5,15 @@ const config = {
   pomodorosTillLongBreak: 3
 }
 
+const user = null
+
 const statistics = {
   totalPomodoros: 0
 }
 
 export default {
   config,
-  statistics
+  user,
+  statistics,
+  isAnonymous: false
 }

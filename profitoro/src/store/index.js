@@ -11,10 +11,12 @@ Vue.use(Vuex)
 
 // Initialize Firebase
 let config = {
-  databaseURL: 'https://pomodorofloyd.firebaseio.com'
+  apiKey: 'AIzaSyDfM1RGnfDP9qGdV0Zqya7_Bl8bYXMseek',
+  databaseURL: 'https://pomodorofloyd.firebaseio.com',
+  authDomain: 'pomodorofloyd.firebaseapp.com'
 }
-let app = firebase.initializeApp(config)
-let db = app.database()
+let firebaseApp = firebase.initializeApp(config)
+let db = firebaseApp.database()
 let configRef = db.ref('/configuration/test')
 let statisticsRef = db.ref('/statistics/test')
 
@@ -22,7 +24,8 @@ export default new Vuex.Store({
   state: {
     ...state,
     configRef,
-    statisticsRef
+    statisticsRef,
+    firebaseApp
   },
   getters,
   mutations: {

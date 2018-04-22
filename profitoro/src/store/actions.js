@@ -37,10 +37,30 @@ export default {
   updateTotalPomodoros ({state}, totalPomodoros) {
     state.statisticsRef.update({totalPomodoros: totalPomodoros})
   },
+  createUser ({state}, {email, password}) {
+    state.firebaseApp.auth().createUserWithEmailAndPassword(email, password).catch(error => {
+      console.log(error.code, error.message)
+    })
+  },
+  authenticate ({state}, {email, password}) {
+    state.firebaseApp.auth().signInWithEmailAndPassword(email, password)
+  },
+  logout ({state}) {
+    state.firebaseApp.auth().signOut()
+  },
+  bindAuth ({commit, state}) {
+    state.firebaseApp.auth().onAuthStateChanged((user) => {
+      commit('setUser', user)
+    })
+  },
   bindConfig: firebaseAction(({bindFirebaseRef, state}) => {
-    bindFirebaseRef('config', state.configRef)
+    if (state.user) {
+      bindFirebaseRef('config', state.configRef)
+    }
   }),
-  bindStatistics: firebaseAction((bindFirebaseRef, state) => {
-    bindFirebaseRef('statistics', state.statisticsRef)
+  bindStatistics: firebaseAction(({bindFirebaseRef, state}) => {
+    if (state.user) {
+      bindFirebaseRef('statistics', state.statisticsRef)
+    }
   })
 }
