@@ -23,7 +23,7 @@
 
 <script>
 import CountDownTimer from './timer/CountDownTimer'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 // courtesy of https://stackoverflow.com/a/23395136
 function beep () {
@@ -42,7 +42,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      config: 'getConfig'
+      config: 'getConfig',
+      totalPomodoros: 'getTotalPomodoros'
     }),
     time () {
       let minutes
@@ -61,6 +62,7 @@ export default {
     CountDownTimer
   },
   methods: {
+    ...mapActions(['updateTotalPomodoros']),
     togglePomodoro () {
       beep()
       // toggle the working state
@@ -76,6 +78,7 @@ export default {
 
       // we have switched to the break state, increase the number of pomodoros and choose between long and short break
       this.pomodoros++
+      this.updateTotalPomodoros(this.totalPomodoros + 1)
       this.isLongBreak = this.pomodoros % this.config.pomodorosTillLongBreak === 0
       this.isShortBreak = !this.isLongBreak
     }
