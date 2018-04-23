@@ -1,37 +1,59 @@
 <template>
   <div>
-    <h1>Register</h1>
-    <input v-model="registerEmail" type="text" placeholder="email"/>
-    <input v-model="registerPassword" type="password" placeholder="password"/>
+    <div>{{titleText}}</div>
+    <form>
+      <input class="" v-model="email" type="email" placeholder="email"/>
+      <input class="" v-model="password" type="password" placeholder="password"/>
+      <button
+        @click="onAction">{{ this.actionButtonText }}</button>
+    </form>
+    <hr />
     <button
-      @click="onRegisterClick">Register!</button>
-    <h1>Login</h1>
-    <input v-model="loginEmail" type="textt" placeholder="email"/>
-    <input v-model="loginPassword" type="password" placeholder="password"/>
-    <button
-      @click="onLoginClick">Log in!</button>
+      @click="onSwitch">{{ this.switchButtonText }}</button>
   </div>
 </template>
 
 <script>
 import {mapActions} from 'vuex'
 
+let TITLE_TEXT = {
+  LOGIN: 'Already a member? Log in here!',
+  SIGNUP: 'Don\'t have an account? Sign up here!'
+}
+let ACTION_BUTTON_TEXT = {
+  LOGIN: 'LOGIN',
+  SIGNUP: 'SIGN UP'
+}
+
 export default {
   data () {
     return {
-      registerEmail: '',
-      registerPassword: '',
-      loginEmail: '',
-      loginPassword: ''
+      isLogin: true,
+      email: '',
+      password: ''
+    }
+  },
+  computed: {
+    titleText () {
+      return this.isLogin ? TITLE_TEXT.LOGIN : TITLE_TEXT.SIGNUP
+    },
+    switchButtonText () {
+      return this.isLogin ? TITLE_TEXT.SIGNUP : TITLE_TEXT.LOGIN
+    },
+    actionButtonText () {
+      return this.isLogin ? ACTION_BUTTON_TEXT.LOGIN : ACTION_BUTTON_TEXT.SIGNUP
     }
   },
   methods: {
     ...mapActions(['createUser', 'authenticate']),
-    onRegisterClick () {
-      this.createUser({email: this.registerEmail, password: this.registerPassword})
+    onSwitch () {
+      this.isLogin = !this.isLogin
     },
-    onLoginClick () {
-      this.authenticate({email: this.loginEmail, password: this.loginPassword})
+    onAction (ev) {
+      ev.preventDefault()
+      ev.stopPropagation()
+      let method = this.isLogin ? this.authenticate : this.createUser
+      method({email: this.email, password: this.password})
     }
   }
 }
