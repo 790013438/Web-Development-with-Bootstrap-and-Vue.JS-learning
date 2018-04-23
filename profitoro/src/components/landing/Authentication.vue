@@ -1,15 +1,21 @@
 <template>
   <div>
-    <div>{{titleText}}</div>
-    <form>
-      <input class="" v-model="email" type="email" placeholder="email"/>
-      <input class="" v-model="password" type="password" placeholder="password"/>
+    <div class="container">
+      <div>{{titleText}}</div>
+      <form>
+        <div class="form-group">
+          <input class="rounded-0 border-top-0 border-left-0 border-right-0 form-control" v-model="email" type="email" placeholder="email"/>
+        </div>
+        <div class="form-group">
+          <input class="rounded-0 border-top-0 border-left-0 border-right-0 form-control" v-model="password" type="password" placeholder="password"/>
+        </div>
+        <button
+          @click="onAction" class="btn btn-secondary btn-block">{{ this.actionButtonText }}</button>
+      </form>
+      <hr />
       <button
-        @click="onAction">{{ this.actionButtonText }}</button>
-    </form>
-    <hr />
-    <button
-      @click="onSwitch">{{ this.switchButtonText }}</button>
+        @click="onSwitch" class="btn btn-secondary btn-block">{{ this.switchButtonText }}</button>
+    </div>
   </div>
 </template>
 
@@ -59,6 +65,8 @@ export default {
 }
 </script>
 
-<style scoped lang="sass">
-
+<style scoped lang="scss">
+button {
+  cursor: pointer
+}
 </style>
