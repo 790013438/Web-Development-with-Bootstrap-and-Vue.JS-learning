@@ -1,10 +1,19 @@
 <template>
-  <div>Go To App</div>
+  <div>
+    <button
+      @click="authenticateAnonymous">
+      START WITHOUT REGISTRATION
+    </button>
+  </div>
 </template>
 
 <script>
-export default {
+import {mapActions} from 'vuex'
 
+export default {
+  methods: {
+    ...mapActions(['authenticateAnonymous'])
+  }
 }
 </script>
 

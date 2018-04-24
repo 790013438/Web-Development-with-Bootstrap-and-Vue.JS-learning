@@ -10,5 +10,6 @@ export default {
   },
   setUser (state, value) {
     state.user = value
+    state.isAnonymouse = value.isAnonymouse
   }
 }
