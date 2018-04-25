@@ -10,6 +10,11 @@ export default {
   },
   setUser (state, value) {
     state.user = value
-    state.isAnonymous = value.isAnonymous
+  },
+  setConfigRef (state, value) {
+    state.configRef = value
+  },
+  setStatisticsRef (state, value) {
+    state.statistiscRef = value
   }
 }

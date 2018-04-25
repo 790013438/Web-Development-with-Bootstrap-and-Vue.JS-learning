@@ -6,6 +6,8 @@ const config = {
 }
 
 const user = null
+const configRef = null
+const statisticsRef = null
 
 const statistics = {
   totalPomodoros: 0
@@ -14,6 +16,7 @@ const statistics = {
 export default {
   config,
   user,
-  statistics,
-  isAnonymous: false
+  configRef,
+  statisticsRef,
+  statistics
 }
