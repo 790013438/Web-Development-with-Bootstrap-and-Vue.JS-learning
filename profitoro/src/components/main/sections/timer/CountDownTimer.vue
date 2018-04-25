@@ -1,7 +1,7 @@
 <template>
   <div class="container text-center">
     <div class="row justify-content-center">
-      <svg-circle-sector class="col-sm-12 col-md-8 col-lg-6 col-xl-4"
+      <svg-circle-sector class="col-sm-12 col-md-10 col-lg-6"
         :angle="angle"
         :text="text"></svg-circle-sector>
     </div>

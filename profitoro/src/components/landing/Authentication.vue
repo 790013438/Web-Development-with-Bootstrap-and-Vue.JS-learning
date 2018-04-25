@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div>{{titleText}}</div>
+      <div><small>{{titleText}}</small></div>
       <form>
         <div class="form-group">
           <input class="rounded-0 border-top-0 border-left-0 border-right-0 form-control" v-model="email" type="email" placeholder="email"/>

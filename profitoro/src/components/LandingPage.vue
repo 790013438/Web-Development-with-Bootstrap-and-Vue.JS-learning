@@ -2,7 +2,7 @@
   <div>
     <logo></logo>
     <tagline></tagline>
-    <div class="container row justify-content-center">
+    <div class="container row justify-content-center align-items-center">
       <div class="col-sm-12 col-md-6 col-lg-6">
         <authentication></authentication>
       </div>
