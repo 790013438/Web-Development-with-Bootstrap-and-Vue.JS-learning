@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="col-sm-12 col-md-6 col-lg-8">
-        <count-down-timer
+        <count-down-timer ref="countdowntimer"
           @finished="togglePomodoro"
           :time="time"></count-down-timer>
       </div>

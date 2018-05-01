@@ -3,9 +3,12 @@
     <svg class="timer" viewBox="0 0 200 200" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg">
       <circle class="bigCircle" r="100" cx="100" cy="100"></circle>
       <circle class="smallCircle" r="90" cx="100" cy="100"></circle>
-      <path class="segment" id="sector" opacity="0.6"
+      <path class="segment"
         :d="path"></path>
-      <text class="text" v-if="text != ''" x="100" y="100">{{text}}</text>
+      <slot></slot>
+      <text class="text" v-if="text != ''" x="100" y="100">
+      {{text}}
+      </text>
     </svg>
   </div>
 </template>
@@ -18,8 +21,14 @@
  */
 function calcEndPoint (angle) {
   let x, y
-  x = 100 - 100 * Math.sin(Math.PI * angle / 180)
-  y = 100 - 100 * Math.cos(Math.PI * angle / 180)
+
+  if (angle <= 180) {
+    x = 100 - 100 * Math.sin(Math.PI * angle / 180)
+    y = 100 - 100 * Math.cos(Math.PI * angle / 180)
+  } else {
+    x = 100 - 100 * Math.sin(Math.PI * angle / 180)
+    y = 100 - 100 * Math.cos(Math.PI * angle / 180)
+  }
 
   return {
     x, y

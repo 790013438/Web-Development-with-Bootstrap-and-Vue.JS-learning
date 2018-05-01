@@ -10,11 +10,11 @@
           <input class="rounded-0 border-top-0 border-left-0 border-right-0 form-control" v-model="password" type="password" placeholder="password"/>
         </div>
         <button
-          @click="onAction" class="btn btn-secondary btn-block">{{ this.actionButtonText }}</button>
+          @click="onAction" class="rounded-0 btn btn-secondary btn-block">{{ this.actionButtonText }}</button>
       </form>
       <hr />
       <button
-        @click="onSwitch" class="btn btn-secondary btn-block">{{ this.switchButtonText }}</button>
+        @click="onSwitch" class="rounded-0 btn btn-secondary btn-block">{{ this.switchButtonText }}</button>
     </div>
   </div>
 </template>

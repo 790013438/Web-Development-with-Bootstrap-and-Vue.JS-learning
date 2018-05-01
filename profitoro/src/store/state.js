@@ -1,5 +1,5 @@
 const config = {
-  workingPomodoro: 0.2,
+  workingPomodoro: 25,
   shortBreak: 5,
   longBreak: 10,
   pomodorosTillLongBreak: 3
@@ -10,7 +10,14 @@ const configRef = null
 const statisticsRef = null
 
 const statistics = {
-  totalPomodoros: 0
+  pomodorosToday: 0,
+  pomodorosLastWeek: 0,
+  pomodorosLastMonth: 0,
+  totalPomodoros: 0,
+  workoutsToday: 0,
+  workoutLastWeek: 0,
+  workoutsLastMonth: 0,
+  workoutsTotal: 0
 }
 
 export default {

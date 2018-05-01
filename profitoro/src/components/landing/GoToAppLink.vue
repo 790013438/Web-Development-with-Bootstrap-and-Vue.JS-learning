@@ -5,9 +5,8 @@
         <span>OR</span>
       </div>
       <div class="col-lg-10 col-sm-12">
-        <button
-          @click="authenticateAnonymous"
-          class="btn btn-large btn-secondary btn-block rounded-0">
+        <button class="btn btn-large btn-secondary btn-block rounded-0"
+          @click="authenticateAnonymous">
           START WITHOUT REGISTRATION
         </button>
         <div>

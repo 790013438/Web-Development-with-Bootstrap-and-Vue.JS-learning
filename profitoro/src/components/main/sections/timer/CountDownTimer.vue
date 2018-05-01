@@ -109,6 +109,6 @@ export default {
 
 <style scoped lang="scss">
 button {
-  cursor: pointer
+  cursor: pointer;
 }
 </style>
